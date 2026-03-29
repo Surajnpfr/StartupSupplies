@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Startup Supplies — Nepal-Based India-China Logistics</title>
+  <link rel="icon" type="image/svg+xml" href="./Logo.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #FFD522;
+      --base: #FFFFFF;
+      --dark-contrast: #0B3C5D;
+      --text: #333333;
+      --background: #F4F6F8;
+      --accent: #1CA7A6;
+      --ink: var(--text);
+      --ink2: rgba(51,51,51,0.82);
+      --ink3: rgba(51,51,51,0.66);
+      --bg: var(--background);
+      --bg2: var(--base);
+      --bg3: rgba(11,60,93,0.14);
+      --accent-light: rgba(28,167,166,0.12);
+      --navy: var(--dark-contrast);
+      --border: rgba(11,60,93,0.14);
+      --radius: 10px;
+      --ff: 'Outfit', 'Noto Sans Devanagari', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── LANGUAGE TOGGLE ── */
+    .lang-switch {
+      position: fixed;
+      top: 18px; right: 20px;
+      z-index: 1000;
+      display: flex;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .lang-btn {
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--ff);
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--ink3);
+      letter-spacing: .04em;
+      transition: background .15s, color .15s;
+    }
+    .lang-btn.active { background: var(--accent); color: var(--base); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1160px, calc(100% - 28px));
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 64px;
+      background: rgba(244,246,248,0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 10px 28px rgba(11,60,93,0.08);
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo img {
+      height: 38px;
+      width: 38px;
+      display: block;
+      border-radius: 50%;
+      border: 1px solid rgba(11,60,93,0.18);
+      background: rgba(255,255,255,0.9);
+      padding: 4px;
+      object-fit: cover;
+    }
+    .logo-text {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--border);
+      background: var(--base);
+      color: var(--ink);
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .nav-links a {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--ink2);
+      text-decoration: none;
+      letter-spacing: .01em;
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--dark-contrast);
+      color: var(--base) !important;
+      padding: 8px 18px;
+      border-radius: 7px;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      transition: background .15s !important;
+    }
+    .nav-cta:hover { background: var(--primary) !important; color: var(--dark-contrast) !important; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 40px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-layout {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(480px, 780px);
+      gap: 36px;
+      align-items: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--background) 0%, var(--base) 62%, rgba(255,213,34,0.18) 100%);
+    }
+    .hero-grid-overlay {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: .5;
+    }
+    .hero-accent-blob {
+      position: absolute;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,213,34,0.22) 0%, transparent 70%);
+      right: -80px; top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      max-width: 680px;
+      animation: fadeUp .9s ease both;
+    }
+    .hero-visual {
+      position: relative;
+      height: clamp(480px, 69vh, 840px);
+      border-radius: 24px;
+      overflow: visible;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+      animation: fadeUp .95s ease both;
+    }
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 16% 11% 8%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(11, 60, 93, 0.18) 0%, rgba(28, 167, 166, 0.12) 36%, rgba(255, 213, 34, 0.09) 60%, transparent 76%);
+      filter: blur(20px);
+      animation: auraPulse 4.8s ease-in-out infinite;
+      z-index: -2;
+      pointer-events: none;
+    }
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: auto 10% 6%;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(11, 60, 93, 0.26) 0%, rgba(11, 60, 93, 0.12) 42%, transparent 76%);
+      filter: blur(11px);
+      animation: groundDrift 5.8s ease-in-out infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .hero-visual-media {
+      position: relative;
+      top: -54px;
+      width: min(100%, 620px);
+      animation: heroCinematicFloat 5.8s cubic-bezier(0.42, 0.02, 0.25, 0.99) infinite;
+      transform-origin: center;
+    }
+    .hero-visual-media::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -32%;
+      width: 42%;
+      height: 100%;
+      background: linear-gradient(106deg, transparent 0%, rgba(255, 255, 255, 0.58) 52%, transparent 100%);
+      transform: skewX(-16deg);
+      mix-blend-mode: screen;
+      animation: premiumShimmer 3.9s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hero-visual-img {
+      width: min(100%, 1020px);
+      height: auto;
+      object-fit: contain;
+      display: block;
+      transform-origin: center;
+      animation: heroMicroBreath 2.9s ease-in-out infinite;
+      will-change: transform;
+      filter: drop-shadow(0 18px 28px rgba(11, 60, 93, 0.24))
+              drop-shadow(0 4px 8px rgba(255, 213, 34, 0.16));
+    }
+    .hero-visual-img:hover {
+      animation-play-state: paused;
+      transform: scale(1.02);
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    h1 {
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    h1 em { color: var(--primary); font-style: normal; }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--ink2);
+      font-weight: 300;
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: 36px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--dark-contrast);
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: .01em;
+      transition: transform .15s, box-shadow .15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,213,34,0.42); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--bg3);
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color .15s, background .15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-ghost:hover { border-color: var(--ink); background: var(--bg2); }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 52px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .stat-num {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -.03em;
+      line-height: 1;
+    }
+    .stat-num span { color: var(--primary); }
+    .stat-label { font-size: 12px; color: var(--ink3); margin-top: 4px; font-weight: 500; letter-spacing: .03em; }
+
+    /* ── SECTIONS SHARED ── */
+    section { padding: 100px 40px; }
+    .section-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    h2 {
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      letter-spacing: -.025em;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .section-lead {
+      font-size: 16px;
+      color: var(--ink2);
+      max-width: 500px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .section-head { margin-bottom: 56px; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--bg); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+      gap: 16px;
+    }
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      padding: 30px 26px;
+      background: var(--base);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 8px 22px rgba(11,60,93,0.06);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      cursor: default;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(28,167,166,0.38);
+      box-shadow: 0 12px 30px rgba(11,60,93,0.12);
+    }
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(140deg, rgba(11,60,93,0.12), rgba(28,167,166,0.2));
+      border: 1px solid rgba(11,60,93,0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      color: var(--dark-contrast);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .service-card:hover .service-icon {
+      background: linear-gradient(140deg, rgba(11,60,93,0.16), rgba(28,167,166,0.28));
+    }
+    .service-card h3 {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+    .service-card p {
+      font-size: 13.5px;
+      color: var(--ink3);
+      line-height: 1.65;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .service-meta {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--dark-contrast);
+      background: rgba(11,60,93,0.07);
+      border: 1px solid rgba(11,60,93,0.12);
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin-bottom: 6px;
+    }
+    .service-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid rgba(11,60,93,0.1);
+      opacity: 1;
+    }
+
+    @media (max-width: 1100px) {
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg2); }
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-img-box {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--bg3);
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--border);
+    }
+    .about-img-box img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+    .about-img-box::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(11,60,93,0.12), transparent);
+    }
+    .about-points {
+      list-style: none;
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .about-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--ink2);
+    }
+    .check-dot {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-weight: 700;
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--navy); color: var(--base); }
+    #testimonials .section-tag { color: rgba(255,255,255,.68); }
+    #testimonials h2 { color: var(--base); }
+    #testimonials .section-lead { color: rgba(255,255,255,.76); }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .testi-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: background .2s;
+    }
+    .testi-card:hover { background: rgba(255,255,255,.09); }
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+    .star { color: var(--accent); }
+    .testi-text {
+      font-size: 14px;
+      color: rgba(255,255,255,.75);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 22px;
+      font-style: italic;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testi-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(255,213,34,0.32);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--base);
+      flex-shrink: 0;
+    }
+    .testi-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: white;
+    }
+    .testi-role { font-size: 12px; color: rgba(255,255,255,.4); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-info p {
+      font-size: 14px;
+      color: var(--ink2);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 32px;
+    }
+    .contact-details { display: flex; flex-direction: column; gap: 16px; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 14px;
+      color: var(--ink2);
+    }
+    .contact-item-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .contact-form {
+      background: var(--base);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 40px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+    label { font-size: 12.5px; font-weight: 600; color: var(--ink2); letter-spacing: .03em; }
+    input, select, textarea {
+      font-family: var(--ff);
+      font-size: 14px;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color .15s, background .15s;
+      width: 100%;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+      background: var(--base);
+    }
+    textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      color: var(--base);
+      border: none;
+      border-radius: 8px;
+      font-family: var(--ff);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: .02em;
+      transition: transform .15s, box-shadow .15s;
+      margin-top: 6px;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(28,167,166,0.3); }
+    .form-note { font-size: 11.5px; color: var(--ink3); text-align: center; margin-top: 12px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.5);
+      padding: 48px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--base);
+      text-decoration: none;
+    }
+    .footer-logo img {
+      height: 34px;
+      width: 34px;
+      display: block;
+      filter: brightness(0) invert(1);
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.08);
+      padding: 4px;
+      object-fit: cover;
+    }
+    .footer-logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--base);
+    }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,.45);
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .footer-links a:hover { color: white; }
+    .footer-copy { font-size: 12px; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes heroCinematicFloat {
+      0%, 100% { transform: translate3d(0, 0, 0) rotateZ(-0.4deg); }
+      50% { transform: translate3d(0, -12px, 0) rotateZ(0.4deg); }
+    }
+    @keyframes heroMicroBreath {
+      0%, 100% { transform: scale(0.995); }
+      50% { transform: scale(1.018); }
+    }
+    @keyframes premiumShimmer {
+      0% { transform: translateX(-180%) skewX(-16deg); opacity: 0; }
+      25% { opacity: 0.92; }
+      60% { opacity: 0.35; }
+      100% { transform: translateX(390%) skewX(-16deg); opacity: 0; }
+    }
+    @keyframes auraPulse {
+      0%, 100% { transform: scale(1); opacity: 0.78; }
+      50% { transform: scale(1.06); opacity: 1; }
+    }
+    @keyframes groundDrift {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.08); opacity: 0.75; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-visual,
+      .hero-visual::before,
+      .hero-visual::after,
+      .hero-visual-media,
+      .hero-visual-media::after,
+      .hero-visual-img {
+        animation: none !important;
+        transform: none !important;
+      }
+    }
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width: 900px) {
+      nav {
+        top: 8px;
+        width: calc(100% - 20px);
+        padding: 0 14px;
+        height: 60px;
+      }
+      .menu-toggle { display: inline-flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.98);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: 0 12px 30px rgba(11,60,93,0.1);
+        padding: 10px;
+        flex-direction: column;
+        gap: 4px;
+      }
+      nav.open .nav-links { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        width: 100%;
+        border-radius: 8px;
+        padding: 10px 12px;
+      }
+      .nav-cta {
+        display: block;
+        text-align: center;
+      }
+      section { padding: 72px 20px; }
+      #hero { padding: 90px 20px 52px; }
+      .hero-layout { grid-template-columns: 1fr; gap: 24px; }
+      .hero-visual {
+        order: -1;
+        height: clamp(240px, 46vh, 420px);
+      }
+      .about-layout, .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; padding: 36px 20px; }
+    }
+
+    /* Bilingual: Nepali strings shown/hidden via JS */
+    .t-ne { display: none; }
+    body.ne .t-en { display: none; }
+    body.ne .t-ne { display: inline; }
+    .b-ne { display: none; }
+    body.ne .b-en { display: none; }
+    body.ne .b-ne { display: block; }
+  </style>
+</head>
+<body class="en">
+
+<!-- Language Switch -->
+<div class="lang-switch">
+  <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
+  <button class="lang-btn" onclick="setLang('ne')" id="btn-ne">NE</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="logo" aria-label="Startup Supplies home">
+    <img src="./Logo.svg" alt="Startup Supplies logo" />
+    <span class="logo-text">Startup Supplies</span>
+  </a>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+  <ul class="nav-links">
+    <li><a href="#services"><span class="t-en">Services</span><span class="t-ne">सेवाहरू</span></a></li>
+    <li><a href="#about"><span class="t-en">About</span><span class="t-ne">हाम्रो बारे</span></a></li>
+    <li><a href="#testimonials"><span class="t-en">Reviews</span><span class="t-ne">समीक्षा</span></a></li>
+    <li><a href="#contact" class="nav-cta"><span class="t-en">Get a Quote</span><span class="t-ne">उद्धरण लिनुहोस्</span></a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-accent-blob"></div>
+  <div class="hero-layout">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="t-en">Nepal-Based India-China Logistics</span>
+        <span class="t-ne">नेपाल-आधारित भारत-चीन लजिस्टिक्स</span>
+      </div>
+      <h1 class="b-en">Move Cargo.<br/><em>Across India &amp; China.</em><br/>On Time.</h1>
+      <h1 class="b-ne">कार्गो सार्नुहोस्।<br/><em>भारत र चीनभर।</em><br/>समयमै।</h1>
+      <p class="hero-sub b-en">Based in Nepal, we provide reliable freight forwarding, customs brokerage, and delivery solutions with primary operations in India and active coverage across China trade routes.</p>
+      <p class="hero-sub b-ne">नेपालमा आधारित हाम्रो टोलीले भारतमा प्राथमिक सञ्चालन र चीनतर्फ सक्रिय व्यापार मार्ग कभरेजसहित भरपर्दो ढुवानी, भन्सार र डेलिभरी समाधान प्रदान गर्छ।</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">
+          <span class="t-en">Get a Quote →</span>
+          <span class="t-ne">उद्धरण लिनुहोस् →</span>
+        </a>
+        <a href="#services" class="btn-ghost">
+          <span class="t-en">Our Services</span>
+          <span class="t-ne">हाम्रा सेवाहरू</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">2<span>+</span></div>
+          <div class="stat-label"><span class="t-en">Primary Markets</span><span class="t-ne">प्राथमिक बजार</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">98<span>%</span></div>
+          <div class="stat-label"><span class="t-en">On-Time Delivery</span><span class="t-ne">समयमा डेलिभरी</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3<span>K+</span></div>
+          <div class="stat-label"><span class="t-en">Shipments/Year</span><span class="t-ne">वार्षिक ढुवानी</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2026</div>
+          <div class="stat-label"><span class="t-en">Operating Since</span><span class="t-ne">सञ्चालन सुरु</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-visual-media">
+        <img src="./Container.svg" alt="Cargo container" class="hero-visual-img" loading="eager" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-head fade-in">
+    <div class="section-tag"><span class="t-en">What We Do</span><span class="t-ne">हामी के गर्छौं</span></div>
+    <h2 class="b-en">End-to-End<br/>Logistics Solutions</h2>
+    <h2 class="b-ne">सम्पूर्ण लजिस्टिक्स<br/>समाधानहरू</h2>
+    <p class="section-lead b-en">From pick-up to final delivery, we handle every step of your supply chain with precision and care.</p>
+    <p class="section-lead b-ne">पिक-अपदेखि अन्तिम डेलिभरीसम्म, हामी आपूर्ति श्रृंखलाको हरेक चरण सटीकता र सावधानीका साथ सम्हाल्छौं।</p>
+  </div>
+  <div class="services-grid fade-in">
+    <div class="service-card">
+      <div class="service-icon" aria-hidden="true">SF</div>
+      <h3><span class="t-en">Sea Freight</span><span class="t-ne">समुद्री ढुवानी</span></h3>
+      <p class="b-en">FCL and LCL shipping with optimized vessel schedules, consolidated routing, and port-to-port visibility.</p>
+      <p class="b-ne">अनुकूलित जहाज तालिका, समेकित रुटिङ र पोर्ट-टु-पोर्ट दृश्यतासहित FCL र LCL समुद्री ढुवानी।</p>
+      <span class="service-meta"><span class="t-en">Coverage: India-China Trade Lanes</span><span class="t-ne">कभरेज: भारत-चीन व्यापार मार्ग</span></span>
+      <span class="service-arrow"><span class="t-en">Service details →</span><span class="t-ne">सेवा विवरण →</span></span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" aria-hidden="true">AF</div>
+      <h3><span class="t-en">Air Freight</span><span class="t-ne">हवाई ढुवानी</span></h3>
+      <p class="b-en">Priority and economy air cargo with SLA-backed transit windows for urgent and high-value shipments.</p>
+      <p class="b-ne">अत्यावश्यक र उच्च-मूल्य ढुवानीका लागि SLA-समर्थित ट्रान्जिट विन्डोसहित प्रायोरिटी र इकोनोमी हवाई कार्गो।</p>
+      <span class="service-meta"><span class="t-en">Coverage: India &amp; China Gateways</span><span class="t-ne">कभरेज: भारत र चीन गेटवे</span></span>
+      <span class="service-arrow"><span class="t-en">Service details →</span><span class="t-ne">सेवा विवरण →</span></span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" aria-hidden="true">RT</div>
+      <h3><span class="t-en">Road Transport</span><span class="t-ne">सडक यातायात</span></h3>
+      <p class="b-en">Cross-border trucking and domestic line-haul with planned milestones and monitored final-mile delivery.</p>
+      <p class="b-ne">योजनाबद्ध माइलस्टोन र निगरानी गरिएको अन्तिम-माइल डेलिभरीसहित सीमापार ट्रकिङ र घरेलु लाइन-हौल।</p>
+      <span class="service-meta"><span class="t-en">Coverage: India-Focused Corridors</span><span class="t-ne">कभरेज: भारत-केन्द्रित करिडोर</span></span>
+      <span class="service-arrow"><span class="t-en">Service details →</span><span class="t-ne">सेवा विवरण →</span></span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" aria-hidden="true">WH</div>
+      <h3><span class="t-en">Warehousing</span><span class="t-ne">गोदाम सेवा</span></h3>
+      <p class="b-en">Secure storage, cycle-counted inventory control, and compliant fulfillment operations across partner facilities.</p>
+      <p class="b-ne">साझेदार सुविधाहरूमा सुरक्षित भण्डारण, चक्र-गणना इन्भेन्टरी नियन्त्रण र अनुपालनयुक्त फुलफिलमेन्ट सञ्चालन।</p>
+      <span class="service-meta"><span class="t-en">Ops: Inventory & Fulfillment</span><span class="t-ne">सञ्चालन: इन्भेन्टरी र फुलफिलमेन्ट</span></span>
+      <span class="service-arrow"><span class="t-en">Service details →</span><span class="t-ne">सेवा विवरण →</span></span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" aria-hidden="true">CB</div>
+      <h3><span class="t-en">Customs Brokerage</span><span class="t-ne">भन्सार दलाली</span></h3>
+      <p class="b-en">HS classification support, documentation audit, and compliant clearance to reduce border delays and penalties.</p>
+      <p class="b-ne">सीमा ढिलाइ र जरिवाना घटाउन HS वर्गीकरण सहयोग, कागजात अडिट र अनुपालनयुक्त भन्सार क्लियरेन्स।</p>
+      <span class="service-meta"><span class="t-en">Compliance: Import / Export</span><span class="t-ne">अनुपालन: आयात / निर्यात</span></span>
+      <span class="service-arrow"><span class="t-en">Service details →</span><span class="t-ne">सेवा विवरण →</span></span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" aria-hidden="true">XD</div>
+      <h3><span class="t-en">Express Delivery</span><span class="t-ne">एक्सप्रेस डेलिभरी</span></h3>
+      <p class="b-en">Time-definite same-day and next-day delivery with priority dispatch for critical documents and parcels.</p>
+      <p class="b-ne">महत्वपूर्ण कागजात र पार्सलका लागि प्राथमिक डिस्प्याचसहित समय-निश्चित उही दिन र अर्को दिन डेलिभरी।</p>
+      <span class="service-meta"><span class="t-en">SLA: Same-day / Next-day</span><span class="t-ne">SLA: उही दिन / अर्को दिन</span></span>
+      <span class="service-arrow"><span class="t-en">Service details →</span><span class="t-ne">सेवा विवरण →</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-layout">
+    <div class="about-visual fade-in">
+      <div class="about-img-box">
+        <img src="./We.svg" alt="Startup Supplies team and logistics operations" loading="lazy" />
+      </div>
+    </div>
+    <div class="fade-in">
+      <div class="section-tag"><span class="t-en">Who We Are</span><span class="t-ne">हामी को हौं</span></div>
+      <h2 class="b-en">A Logistics Partner<br/>You Can Rely On</h2>
+      <h2 class="b-ne">एक लजिस्टिक्स साझेदार<br/>जसमा भर पर्न सकिन्छ</h2>
+      <p style="color:var(--ink2);font-size:14.5px;font-weight:300;line-height:1.75;margin-bottom:8px;" class="b-en">Founded in early 2026, Startup Supplies is based in Nepal to support importers and exporters with reliable and cost-effective logistics solutions. Our primary operations are in India, with active service availability across key China trade routes through a trusted partner network.</p>
+      <p style="color:var(--ink2);font-size:14.5px;font-weight:300;line-height:1.75;margin-bottom:8px;" class="b-en">Our focus is simple: move your cargo efficiently, communicate clearly, and solve problems quickly - every time.</p>
+      <p style="color:var(--ink2);font-size:14.5px;font-weight:300;line-height:1.75;margin-bottom:8px;" class="b-ne">२०२६ को सुरुआतमा स्थापना भएको Startup Supplies नेपालमा आधारित भई आयातकर्ता र निर्यातकर्ताहरूलाई भरपर्दो र किफायती लजिस्टिक्स समाधान प्रदान गर्छ। हाम्रो प्राथमिक सञ्चालन भारतमा केन्द्रित छ, र विश्वसनीय साझेदार सञ्जालमार्फत चीनका प्रमुख व्यापार मार्गहरूमा पनि सेवा उपलब्ध छ।</p>
+      <p style="color:var(--ink2);font-size:14.5px;font-weight:300;line-height:1.75;margin-bottom:8px;" class="b-ne">हाम्रो ध्यान सरल छ: तपाईंको कार्गो कुशलतापूर्वक सार्ने, स्पष्ट संचार गर्ने, र समस्या छिटो समाधान गर्ने - हरेक पटक।</p>
+      <ul class="about-points">
+        <li>
+          <span class="check-dot">✓</span>
+          <span class="b-en">Reliable Partner Network Across India and China Routes - Ensuring smooth cargo movement through trusted corridor partners.</span>
+          <span class="b-ne">भारत र चीन मार्गभर भरपर्दो साझेदार सञ्जाल - विश्वसनीय करिडोर साझेदारमार्फत सहज कार्गो ढुवानी सुनिश्चित।</span>
+        </li>
+        <li>
+          <span class="check-dot">✓</span>
+          <span class="b-en">24/7 Communication &amp; Support - We stay responsive and available whenever you need updates or assistance.</span>
+          <span class="b-ne">२४/७ संचार र सहयोग - अपडेट वा सहयोग आवश्यक पर्दा हामी सधैं उपलब्ध र प्रतिक्रियाशील रहन्छौं।</span>
+        </li>
+        <li>
+          <span class="check-dot">✓</span>
+          <span class="b-en">Real-Time Shipment Visibility - Track your cargo across different transport modes with clear updates.</span>
+          <span class="b-ne">रियल-टाइम शिपमेन्ट दृश्यता - विभिन्न यातायात माध्यममा स्पष्ट अपडेटसहित आफ्नो कार्गो ट्र्याक गर्नुहोस्।</span>
+        </li>
+        <li>
+          <span class="check-dot">✓</span>
+          <span class="b-en">Cost-Effective &amp; Transparent Pricing - No unnecessary charges, just practical and honest logistics solutions.</span>
+          <span class="b-ne">किफायती र पारदर्शी मूल्य निर्धारण - अनावश्यक शुल्क बिना व्यावहारिक र इमानदार लजिस्टिक्स समाधान।</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-head fade-in">
+    <div class="section-tag"><span class="t-en">Client Reviews</span><span class="t-ne">ग्राहक समीक्षाहरू</span></div>
+    <h2 class="b-en">Trusted by Businesses<br/>Across India and China Routes</h2>
+    <h2 class="b-ne">भारत र चीन मार्गका व्यवसायहरूले<br/>भरोसा गर्छन्</h2>
+    <p class="section-lead b-en">Don't take our word for it — here's what our clients have to say.</p>
+    <p class="section-lead b-ne">हाम्रो कुरामा मात्र नमान्नुहोस् — हाम्रा ग्राहकहरूले के भन्छन् सुन्नुहोस्।</p>
+  </div>
+  <div class="testi-grid fade-in">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text b-en">"Startup Supplies handled our entire supply chain restructuring flawlessly. Shipments arrived on time, documentation was spotless, and their team was available around the clock."</p>
+      <p class="testi-text b-ne">"Startup Supplies ले हाम्रो पूरै आपूर्ति श्रृंखला पुनर्संरचनालाई निर्दोष रूपमा सम्हाल्यो। ढुवानी समयमै आयो, कागजात सफा थियो, र उनीहरूको टोली चौबिसै घण्टा उपलब्ध थियो।"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">MK</div>
+        <div>
+          <div class="testi-name">Michael K.</div>
+          <div class="testi-role"><span class="t-en">Supply Chain Director, Kolkata</span><span class="t-ne">आपूर्ति श्रृंखला निर्देशक, कोलकाता</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text b-en">"We've used Startup Supplies for our India-China import cycle for the past year. Their customs brokerage service saves us days on every shipment. Highly recommended."</p>
+      <p class="testi-text b-ne">"हामीले गत वर्षदेखि भारत-चीन आयात चक्रका लागि Startup Supplies प्रयोग गर्दै आएका छौं। भन्सार दलाली सेवाले प्रत्येक ढुवानीमा हाम्रो दिनहरू बचाउँछ। अत्यधिक सिफारिस।"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">AS</div>
+        <div>
+          <div class="testi-name">Anya S.</div>
+          <div class="testi-role"><span class="t-en">E-commerce Owner, Guangzhou</span><span class="t-ne">ई-कमर्स मालिक, ग्वाङझाउ</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text b-en">"Exceptional air freight service. Our time-sensitive pharmaceutical shipments are always handled with the highest care and speed. True professionals."</p>
+      <p class="testi-text b-ne">"उत्कृष्ट हवाई ढुवानी सेवा। हाम्रा समय-संवेदनशील फार्मास्युटिकल ढुवानीहरू सधैं सर्वोच्च सावधानी र गतिसँग सम्हालिन्छन्। साँचो पेशेवर।"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">RJ</div>
+        <div>
+          <div class="testi-name">Rajiv J.</div>
+          <div class="testi-role"><span class="t-en">Logistics Manager, Mumbai</span><span class="t-ne">लजिस्टिक्स प्रबन्धक, मुम्बई</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-layout">
+    <div class="fade-in">
+      <div class="section-tag"><span class="t-en">Get in Touch</span><span class="t-ne">सम्पर्कमा आउनुहोस्</span></div>
+      <h2 class="b-en">Request a Quote<br/>or Ask Anything</h2>
+      <h2 class="b-ne">उद्धरण अनुरोध गर्नुहोस्<br/>वा केही पनि सोध्नुहोस्</h2>
+      <p class="contact-info b-en">Our Nepal-based team typically responds within 2 business hours. For urgent inquiries, call us directly.</p>
+      <p class="contact-info b-ne">हाम्रो नेपाल-आधारित टोलीले सामान्यतया २ व्यावसायिक घण्टाभित्र जवाफ दिन्छ। अत्यावश्यक सोधपुछका लागि हामीलाई सिधै कल गर्नुहोस्।</p>
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <span><span class="t-en">Bhairahawa, Rupandehi</span><span class="t-ne">कालिकापथ-१२, रुपन्देही</span></span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <span>+977 9766715752</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <span>startupsuppliesnepal@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕐</div>
+          <span><span class="t-en">Mon–Sat 09:00–19:00 NPT (Nepal), India &amp; China support windows available</span><span class="t-ne">सोम–शनि ०९:००–१९:०० NPT (नेपाल), भारत र चीन समर्थन समय उपलब्ध</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form fade-in">
+      <div class="form-row">
+        <div class="form-group">
+          <label><span class="t-en">Full Name</span><span class="t-ne">पूरा नाम</span></label>
+          <input id="full-name" type="text" placeholder="John Doe" maxlength="80"/>
+        </div>
+        <div class="form-group">
+          <label><span class="t-en">Company</span><span class="t-ne">कम्पनी</span></label>
+          <input id="company-name" type="text" placeholder="Acme Corp" maxlength="100"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label><span class="t-en">Email</span><span class="t-ne">इमेल</span></label>
+          <input id="email-address" type="email" placeholder="you@company.com" maxlength="120"/>
+        </div>
+        <div class="form-group">
+          <label><span class="t-en">Phone</span><span class="t-ne">फोन</span></label>
+          <input id="phone-number" type="tel" placeholder="+1 000 000 0000" maxlength="20"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label><span class="t-en">Service Required</span><span class="t-ne">आवश्यक सेवा</span></label>
+        <select id="service-required">
+          <option value=""><span class="t-en">Select a service…</span></option>
+          <option>Sea Freight / समुद्री ढुवानी</option>
+          <option>Air Freight / हवाई ढुवानी</option>
+          <option>Road Transport / सडक यातायात</option>
+          <option>Warehousing / गोदाम</option>
+          <option>Customs Brokerage / भन्सार</option>
+          <option>Express Delivery / एक्सप्रेस</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label><span class="t-en">Message</span><span class="t-ne">सन्देश</span></label>
+        <textarea id="shipment-message" placeholder="Tell us about your shipment…" maxlength="600"></textarea>
+        <p class="form-note"><span class="t-en">Inquiry message limit: 600 characters.</span><span class="t-ne">सोधपुछ सन्देश सीमा: ६०० वर्ण।</span></p>
+      </div>
+      <button class="form-submit" onclick="handleSubmit(event, this)">
+        <span class="t-en">Send Request →</span>
+        <span class="t-ne">अनुरोध पठाउनुहोस् →</span>
+      </button>
+      <p class="form-note"><span class="t-en">We respect your privacy. No spam, ever.</span><span class="t-ne">हामी तपाईंको गोपनीयताको सम्मान गर्छौं। कहिल्यै स्प्याम गर्दैनौं।</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#hero" class="footer-logo" aria-label="Startup Supplies home">
+    <img src="./Logo.svg" alt="Startup Supplies logo" />
+    <span class="footer-logo-text">Startup Supplies</span>
+  </a>
+  <div class="footer-links">
+    <a href="#services"><span class="t-en">Services</span><span class="t-ne">सेवाहरू</span></a>
+    <a href="#about"><span class="t-en">About</span><span class="t-ne">बारे</span></a>
+    <a href="#testimonials"><span class="t-en">Reviews</span><span class="t-ne">समीक्षा</span></a>
+    <a href="#contact"><span class="t-en">Contact</span><span class="t-ne">सम्पर्क</span></a>
+  </div>
+  <div class="footer-copy">
+    <span class="t-en">© 2026 Startup Supplies. All rights reserved.</span>
+    <span class="t-ne">© २०२६ Startup Supplies. सर्वाधिकार सुरक्षित।</span>
+  </div>
+</footer>
+
+<script>
+  // Language toggle
+  function setLang(lang) {
+    document.body.className = lang;
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-ne').classList.toggle('active', lang === 'ne');
+  }
+
+  // Mobile navigation
+  const nav = document.querySelector('nav');
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  function toggleMenu(forceClose = false) {
+    const shouldOpen = forceClose ? false : !nav.classList.contains('open');
+    nav.classList.toggle('open', shouldOpen);
+    menuToggle.textContent = shouldOpen ? '×' : '☰';
+    menuToggle.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+  }
+
+  menuToggle.addEventListener('click', () => toggleMenu());
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => toggleMenu(true));
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) toggleMenu(true);
+  });
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Opens WhatsApp with a formatted quote request.
+  function handleSubmit(e, button) {
+    e.preventDefault();
+
+    const getValue = (id) => {
+      const element = document.getElementById(id);
+      return element ? element.value.trim() : '';
+    };
+
+    const fullName = getValue('full-name');
+    const company = getValue('company-name');
+    const email = getValue('email-address');
+    const phone = getValue('phone-number');
+    const service = getValue('service-required');
+    const message = getValue('shipment-message');
+    const isNe = document.body.classList.contains('ne');
+    const fieldLimits = {
+      fullName: 80,
+      company: 100,
+      email: 120,
+      phone: 20,
+      message: 600
+    };
+
+    const hasInvalidLength = (
+      fullName.length > fieldLimits.fullName ||
+      company.length > fieldLimits.company ||
+      email.length > fieldLimits.email ||
+      phone.length > fieldLimits.phone ||
+      message.length > fieldLimits.message
+    );
+
+    if (hasInvalidLength) {
+      alert(isNe
+        ? 'कृपया निर्धारित अक्षर सीमाभित्र मात्र विवरण प्रविष्ट गर्नुहोस्।'
+        : 'Please keep each inquiry field within the allowed character limits.'
+      );
+      return;
+    }
+
+    const whatsappMessage = [
+      isNe ? 'नमस्ते, मसँग एक सोधपुछ छ।' : 'Hello, I have an inquiry.',
+      '',
+      isNe ? 'सोधपुछ विवरण:' : 'Inquiry Details:',
+      `${isNe ? 'पूरा नाम' : 'Full Name'}: ${fullName || '-'}`,
+      `${isNe ? 'कम्पनी' : 'Company'}: ${company || '-'}`,
+      `${isNe ? 'इमेल' : 'Email'}: ${email || '-'}`,
+      `${isNe ? 'फोन' : 'Phone'}: ${phone || '-'}`,
+      `${isNe ? 'आवश्यक सेवा' : 'Service Required'}: ${service || '-'}`,
+      `${isNe ? 'सन्देश' : 'Message'}: ${message || '-'}`,
+      '',
+      isNe ? 'धन्यवाद।' : 'Thank you.'
+    ].join('\n');
+
+    const whatsappUrl = `https://wa.me/9779766715752?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+
+    button.innerHTML = isNe
+      ? '<span class="t-ne">WhatsApp खोल्दै...</span>'
+      : '<span class="t-en">Opening WhatsApp...</span>';
+    button.style.background = 'var(--accent)';
+
+    setTimeout(() => {
+      button.innerHTML = isNe
+        ? '<span class="t-ne">अनुरोध पठाउनुहोस् →</span>'
+        : '<span class="t-en">Send Request →</span>';
+      button.style.background = '';
+    }, 1800);
+  }
+</script>
+</body>
+</html>
