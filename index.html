@@ -821,6 +821,10 @@
       0%, 100% { transform: scale(1.38); }
       50% { transform: scale(1.52); }
     }
+    @keyframes heroMicroBreathMobile {
+      0%, 100% { transform: scale(1.08); }
+      50% { transform: scale(1.16); }
+    }
     @keyframes premiumShimmer {
       0% { transform: translateX(-180%) skewX(-16deg); opacity: 0; }
       25% { opacity: 0.92; }
@@ -937,7 +941,11 @@
         top: -6px;
         right: 0;
         margin-left: 0;
-        width: min(100%, 520px);
+        width: min(100%, 440px);
+      }
+      .hero-visual-img {
+        max-height: 300px;
+        animation: heroMicroBreathMobile 2.9s ease-in-out infinite;
       }
       .about-layout, .contact-layout { grid-template-columns: 1fr; gap: 40px; }
       .form-row { grid-template-columns: 1fr; }
