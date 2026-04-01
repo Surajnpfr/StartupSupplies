@@ -161,8 +161,8 @@
       z-index: 1;
       width: 100%;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(480px, 780px);
-      gap: 36px;
+      grid-template-columns: minmax(0, 1.08fr) minmax(420px, 620px);
+      gap: 30px;
       align-items: center;
     }
     .hero-bg {
@@ -188,11 +188,12 @@
     .hero-content {
       position: relative;
       max-width: 680px;
+      z-index: 2;
       animation: fadeUp .9s ease both;
     }
     .hero-visual {
       position: relative;
-      height: clamp(480px, 69vh, 840px);
+      height: clamp(420px, 60vh, 620px);
       border-radius: 24px;
       overflow: visible;
       border: 0;
@@ -200,6 +201,7 @@
       box-shadow: none;
       display: grid;
       place-items: center;
+      justify-items: end;
       isolation: isolate;
       animation: fadeUp .95s ease both;
     }
@@ -228,10 +230,12 @@
     }
     .hero-visual-media {
       position: relative;
-      top: -54px;
-      width: min(100%, 620px);
+      top: -20px;
+      right: 0;
+      width: min(100%, 560px);
       animation: heroCinematicFloat 5.8s cubic-bezier(0.42, 0.02, 0.25, 0.99) infinite;
       transform-origin: center;
+      margin-left: auto;
     }
     .hero-visual-media::after {
       content: "";
@@ -247,7 +251,8 @@
       pointer-events: none;
     }
     .hero-visual-img {
-      width: min(100%, 1020px);
+      width: 100%;
+      max-height: 540px;
       height: auto;
       object-fit: contain;
       display: block;
@@ -259,7 +264,7 @@
     }
     .hero-visual-img:hover {
       animation-play-state: paused;
-      transform: scale(1.02);
+      transform: scale(1.54);
     }
     .hero-tag {
       display: inline-flex;
@@ -303,10 +308,18 @@
       gap: 14px;
       flex-wrap: wrap;
     }
+    .hero-trust {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--ink2);
+      font-weight: 500;
+      line-height: 1.6;
+    }
     .btn-primary {
       background: var(--primary);
       color: var(--dark-contrast);
       padding: 13px 28px;
+      min-height: 46px;
       border-radius: 8px;
       font-size: 14px;
       font-weight: 600;
@@ -323,6 +336,7 @@
       color: var(--ink);
       border: 1.5px solid var(--bg3);
       padding: 13px 28px;
+      min-height: 46px;
       border-radius: 8px;
       font-size: 14px;
       font-weight: 500;
@@ -379,6 +393,34 @@
       font-weight: 300;
     }
     .section-head { margin-bottom: 56px; }
+    #final-cta {
+      background: linear-gradient(145deg, var(--dark-contrast), #0f4f78);
+      color: var(--base);
+      text-align: center;
+    }
+    #final-cta h2,
+    #final-cta .section-lead {
+      color: var(--base);
+      margin-inline: auto;
+    }
+    #final-cta .section-tag { color: rgba(255,255,255,0.74); }
+    .cta-group {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .hero-layout,
+    .section-head,
+    .services-grid,
+    .about-layout,
+    .testi-grid,
+    .contact-layout,
+    .cta-group {
+      width: min(1160px, 100%);
+      margin-inline: auto;
+    }
 
     /* ── SERVICES ── */
     #services { background: var(--bg); }
@@ -422,12 +464,37 @@
     .service-card:hover .service-icon {
       background: linear-gradient(140deg, rgba(11,60,93,0.16), rgba(28,167,166,0.28));
     }
+    .service-icon.icon-only {
+      width: auto;
+      height: auto;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      align-self: flex-start;
+      line-height: 0;
+      margin-bottom: 18px;
+    }
+    .service-card:hover .service-icon.icon-only {
+      background: transparent;
+      border: none;
+    }
     .service-card h3 {
       font-size: 17px;
       font-weight: 600;
       letter-spacing: -.01em;
       margin-bottom: 10px;
       color: var(--ink);
+    }
+    .service-icon img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      display: block;
+    }
+    .service-icon.icon-only img {
+      width: 50px;
+      height: 50px;
     }
     .service-card p {
       font-size: 13.5px;
@@ -751,8 +818,8 @@
       50% { transform: translate3d(0, -12px, 0) rotateZ(0.4deg); }
     }
     @keyframes heroMicroBreath {
-      0%, 100% { transform: scale(0.995); }
-      50% { transform: scale(1.018); }
+      0%, 100% { transform: scale(1.38); }
+      50% { transform: scale(1.52); }
     }
     @keyframes premiumShimmer {
       0% { transform: translateX(-180%) skewX(-16deg); opacity: 0; }
@@ -781,6 +848,28 @@
     }
     .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
     .fade-in.visible { opacity: 1; transform: none; }
+    .whatsapp-float {
+      position: fixed;
+      right: 20px;
+      bottom: 22px;
+      z-index: 980;
+      width: 64px;
+      height: 64px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .2s ease;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover {
+      transform: translateY(-2px) scale(1.08);
+    }
+    .whatsapp-float img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      display: block;
+    }
 
     /* ── RESPONSIVE ── */
     @media(max-width: 900px) {
@@ -829,13 +918,63 @@
       section { padding: 72px 20px; }
       #hero { padding: 90px 20px 52px; }
       .hero-layout { grid-template-columns: 1fr; gap: 24px; }
+      .hero-sub {
+        font-size: 16px;
+        margin-bottom: 24px;
+      }
+      .hero-stats {
+        gap: 20px;
+        margin-top: 32px;
+        padding-top: 22px;
+      }
+      .stat-num { font-size: 24px; }
       .hero-visual {
         order: -1;
         height: clamp(240px, 46vh, 420px);
+        justify-items: center;
+      }
+      .hero-visual-media {
+        top: -6px;
+        right: 0;
+        margin-left: 0;
+        width: min(100%, 520px);
       }
       .about-layout, .contact-layout { grid-template-columns: 1fr; gap: 40px; }
       .form-row { grid-template-columns: 1fr; }
       footer { flex-direction: column; text-align: center; padding: 36px 20px; }
+      .whatsapp-float {
+        width: 54px;
+        height: 54px;
+        right: 14px;
+        bottom: 16px;
+      }
+      .whatsapp-float img {
+        width: 54px;
+        height: 54px;
+      }
+    }
+    @media(max-width: 520px) {
+      h1 { font-size: clamp(30px, 9vw, 38px); }
+      .hero-trust { font-size: 12px; }
+      .btn-primary,
+      .btn-ghost {
+        width: 100%;
+        justify-content: center;
+      }
+      .service-card {
+        padding: 24px 18px;
+      }
+      .contact-form {
+        padding: 24px 16px;
+      }
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+      }
+      .whatsapp-float img {
+        width: 50px;
+        height: 50px;
+      }
     }
     @media(max-width: 620px) {
       .logo-text { display: none; }
@@ -870,8 +1009,8 @@
   <ul class="nav-links">
     <li><a href="#services"><span class="t-en">Services</span><span class="t-ne">सेवाहरू</span></a></li>
     <li><a href="#about"><span class="t-en">About</span><span class="t-ne">हाम्रो बारे</span></a></li>
-    <li><a href="#testimonials"><span class="t-en">Reviews</span><span class="t-ne">समीक्षा</span></a></li>
-    <li><a href="#contact" class="nav-cta"><span class="t-en">Get a Quote</span><span class="t-ne">उद्धरण लिनुहोस्</span></a></li>
+    <li><a href="#faq"><span class="t-en">FAQ</span><span class="t-ne">प्रश्नोत्तर</span></a></li>
+    <li><a href="#contact" class="nav-cta"><span class="t-en">Free Consultation</span><span class="t-ne">निःशुल्क परामर्श</span></a></li>
   </ul>
 </nav>
 
@@ -883,39 +1022,41 @@
   <div class="hero-layout">
     <div class="hero-content">
       <div class="hero-tag">
-        <span class="t-en">Nepal-Based India-China Logistics</span>
-        <span class="t-ne">नेपाल-आधारित भारत-चीन लजिस्टिक्स</span>
+        <span class="t-en">Startup Supplies Nepal</span>
+        <span class="t-ne">स्टार्टअप सप्लाइज नेपाल</span>
       </div>
-      <h1 class="b-en">Move Cargo.<br/><em>Across India &amp; China.</em><br/>On Time.</h1>
-      <h1 class="b-ne">कार्गो सार्नुहोस्।<br/><em>भारत र चीनभर।</em><br/>समयमै।</h1>
-      <p class="hero-sub b-en">Based in Nepal, we provide reliable freight forwarding, customs brokerage, and delivery solutions with primary operations in India and active coverage across China trade routes.</p>
-      <p class="hero-sub b-ne">नेपालमा आधारित हाम्रो टोलीले भारतमा प्राथमिक सञ्चालन र चीनतर्फ सक्रिय व्यापार मार्ग कभरेजसहित भरपर्दो ढुवानी, भन्सार र डेलिभरी समाधान प्रदान गर्छ।</p>
+      <h1 class="b-en">Build Your Business in Nepal<br/><em>Effortlessly &amp; Profitably</em></h1>
+      <h1 class="b-ne">नेपालमा आफ्नो व्यवसाय सुरु गर्नुहोस्<br/><em>सहज र लाभदायक तरिकाले</em></h1>
+      <p class="hero-sub b-en">We source, import, and deliver everything you need - from trending products to high-quality machines - so you can focus on growth, marketing, and scaling your business.</p>
+      <p class="hero-sub b-ne">ट्रेन्डिङ उत्पादनदेखि उच्च गुणस्तरीय मेसिनसम्म, तपाईंलाई चाहिने सबै हामी सोर्सिङ, आयात र डेलिभरी गर्छौं ताकि तपाईंले व्यवसाय वृद्धि, मार्केटिङ र स्केलिङमा ध्यान दिन सक्नुहोस्।</p>
       <div class="hero-ctas">
         <a href="#contact" class="btn-primary">
-          <span class="t-en">Get a Quote →</span>
-          <span class="t-ne">उद्धरण लिनुहोस् →</span>
+          <span class="t-en">Start Your Business Today</span>
+          <span class="t-ne">आजै व्यवसाय सुरु गर्नुहोस्</span>
         </a>
-        <a href="#services" class="btn-ghost">
-          <span class="t-en">Our Services</span>
-          <span class="t-ne">हाम्रा सेवाहरू</span>
+        <a href="#contact" class="btn-ghost">
+          <span class="t-en">Get Free Consultation</span>
+          <span class="t-ne">निःशुल्क परामर्श लिनुहोस्</span>
         </a>
       </div>
+      <p class="hero-trust b-en"> Beginner-friendly | End-to-end support | Verified products</p>
+      <p class="hero-trust b-ne"> सुरुवातकर्तामैत्री | सम्पूर्ण सहयोग | प्रमाणित उत्पादन</p>
       <div class="hero-stats">
         <div class="stat-item">
-          <div class="stat-num">2<span>+</span></div>
-          <div class="stat-label"><span class="t-en">Primary Markets</span><span class="t-ne">प्राथमिक बजार</span></div>
+          <div class="stat-num">100<span>+</span></div>
+          <div class="stat-label"><span class="t-en">Verified Suppliers</span><span class="t-ne">प्रमाणित सप्लायर</span></div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">98<span>%</span></div>
-          <div class="stat-label"><span class="t-en">On-Time Delivery</span><span class="t-ne">समयमा डेलिभरी</span></div>
+          <div class="stat-num">No</div>
+          <div class="stat-label"><span class="t-en">Minimum Order Quantity</span><span class="t-ne">न्यूनतम अर्डर आवश्यक छैन</span></div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">3<span>K+</span></div>
-          <div class="stat-label"><span class="t-en">Shipments/Year</span><span class="t-ne">वार्षिक ढुवानी</span></div>
+          <div class="stat-num">100<span>+</span></div>
+          <div class="stat-label"><span class="t-en">Satisfied Clients</span><span class="t-ne">सन्तुष्ट ग्राहक</span></div>
         </div>
         <div class="stat-item">
           <div class="stat-num">2026</div>
-          <div class="stat-label"><span class="t-en">Operating Since</span><span class="t-ne">सञ्चालन सुरु</span></div>
+          <div class="stat-label"><span class="t-en">Helping Startups Since</span><span class="t-ne">सहयोग सुरु भएको वर्ष</span></div>
         </div>
       </div>
     </div>
@@ -930,60 +1071,72 @@
 <!-- SERVICES -->
 <section id="services">
   <div class="section-head fade-in">
-    <div class="section-tag"><span class="t-en">What We Do</span><span class="t-ne">हामी के गर्छौं</span></div>
-    <h2 class="b-en">End-to-End<br/>Logistics Solutions</h2>
-    <h2 class="b-ne">सम्पूर्ण लजिस्टिक्स<br/>समाधानहरू</h2>
-    <p class="section-lead b-en">From factory sourcing to final delivery, we manage importing, customs, supplier coordination, and fulfillment so you can focus on growing your business.</p>
-    <p class="section-lead b-ne">फ्याक्ट्री सोर्सिङदेखि अन्तिम डेलिभरीसम्म, हामी आयात, भन्सार, सप्लायर समन्वय र फुलफिलमेन्ट सम्हाल्छौं ताकि तपाईंले आफ्नो व्यवसाय बढाउन ध्यान दिन सक्नुहोस्।</p>
+    <div class="section-tag"><span class="t-en">Value Proposition</span><span class="t-ne">मुख्य फाइदाहरू</span></div>
+    <h2 class="b-en">Why Entrepreneurs<br/>Choose Us</h2>
+    <h2 class="b-ne">उद्यमीहरूले हामीलाई<br/>किन छान्छन्</h2>
+    <p class="section-lead b-en">Trusted process, verified suppliers, and complete execution support to launch and scale your business with less risk.</p>
+    <p class="section-lead b-ne">कम जोखिममा व्यवसाय सुरु र विस्तार गर्न प्रमाणित सप्लायर, भरपर्दो प्रक्रिया र सम्पूर्ण कार्यान्वयन सहयोग।</p>
   </div>
   <div class="services-grid fade-in">
     <div class="service-card">
-      <div class="service-icon" aria-hidden="true">SF</div>
-      <h3><span class="t-en">Sea Freight</span><span class="t-ne">समुद्री ढुवानी</span></h3>
-      <p class="b-en">FCL and LCL shipping with optimized vessel schedules, consolidated routing, and port-to-port visibility.</p>
-      <p class="b-ne">अनुकूलित जहाज तालिका, समेकित रुटिङ र पोर्ट-टु-पोर्ट दृश्यतासहित FCL र LCL समुद्री ढुवानी।</p>
-      <span class="service-meta"><span class="t-en">Coverage: India-China Trade Lanes</span><span class="t-ne">कभरेज: भारत-चीन व्यापार मार्ग</span></span>
-      <span class="service-arrow"><span class="t-en">Service details →</span><span class="t-ne">सेवा विवरण →</span></span>
+      <div class="service-icon icon-only" aria-hidden="true">
+        <img src="./Trusted.svg" alt="" />
+      </div>
+      <h3><span class="t-en">Trusted, Verified Suppliers</span><span class="t-ne">भरपर्दो, प्रमाणित सप्लायर</span></h3>
+      <p class="b-en">We work only with vetted suppliers to ensure quality products and reliable fulfillment timelines.</p>
+      <p class="b-ne">गुणस्तरीय उत्पादन र भरपर्दो आपूर्ति समय सुनिश्चित गर्न हामी प्रमाणित सप्लायरसँग मात्र काम गर्छौं।</p>
+      <span class="service-meta"><span class="t-en">Quality: Verified Sources</span><span class="t-ne">गुणस्तर: प्रमाणित स्रोत</span></span>
+      <span class="service-arrow"><span class="t-en">Learn more →</span><span class="t-ne">थप जान्नुहोस् →</span></span>
     </div>
     <div class="service-card">
-      <div class="service-icon" aria-hidden="true">AF</div>
-      <h3><span class="t-en">Air Freight</span><span class="t-ne">हवाई ढुवानी</span></h3>
-      <p class="b-en">Priority and economy air cargo with SLA-backed transit windows for urgent and high-value shipments.</p>
-      <p class="b-ne">अत्यावश्यक र उच्च-मूल्य ढुवानीका लागि SLA-समर्थित ट्रान्जिट विन्डोसहित प्रायोरिटी र इकोनोमी हवाई कार्गो।</p>
-      <span class="service-meta"><span class="t-en">Coverage: India &amp; China Gateways</span><span class="t-ne">कभरेज: भारत र चीन गेटवे</span></span>
-      <span class="service-arrow"><span class="t-en">Service details →</span><span class="t-ne">सेवा विवरण →</span></span>
+      <div class="service-icon icon-only" aria-hidden="true">
+        <img src="./Hassle.svg" alt="" />
+      </div>
+      <h3><span class="t-en">Hassle-Free Importing</span><span class="t-ne">झन्झटमुक्त आयात प्रक्रिया</span></h3>
+      <p class="b-en">From supplier coordination to shipping and customs, we professionally manage each import stage.</p>
+      <p class="b-ne">सप्लायर समन्वयदेखि ढुवानी र भन्सारसम्म, आयातको हरेक चरण हामी व्यावसायिक रूपमा सम्हाल्छौं।</p>
+      <span class="service-meta"><span class="t-en">Scope: End-to-End</span><span class="t-ne">दायरा: सम्पूर्ण प्रक्रिया</span></span>
+      <span class="service-arrow"><span class="t-en">Learn more →</span><span class="t-ne">थप जान्नुहोस् →</span></span>
     </div>
     <div class="service-card">
-      <div class="service-icon" aria-hidden="true">RT</div>
-      <h3><span class="t-en">Road Transport</span><span class="t-ne">सडक यातायात</span></h3>
-      <p class="b-en">Cross-border trucking and domestic line-haul with planned milestones and monitored final-mile delivery.</p>
-      <p class="b-ne">योजनाबद्ध माइलस्टोन र निगरानी गरिएको अन्तिम-माइल डेलिभरीसहित सीमापार ट्रकिङ र घरेलु लाइन-हौल।</p>
-      <span class="service-meta"><span class="t-en">Coverage: India-Focused Corridors</span><span class="t-ne">कभरेज: भारत-केन्द्रित करिडोर</span></span>
-      <span class="service-arrow"><span class="t-en">Service details →</span><span class="t-ne">सेवा विवरण →</span></span>
+      <div class="service-icon icon-only" aria-hidden="true">
+        <img src="./Beginner.svg" alt="" />
+      </div>
+      <h3><span class="t-en">Beginner-Friendly Guidance</span><span class="t-ne">सुरुवातकर्तामैत्री मार्गदर्शन</span></h3>
+      <p class="b-en">New to business? We guide you step by step from product selection to launch readiness.</p>
+      <p class="b-ne">व्यवसायमा नयाँ हुनुहुन्छ? उत्पादन छनोटदेखि लन्च तयारीसम्म हामी चरणबद्ध मार्गदर्शन दिन्छौं।</p>
+      <span class="service-meta"><span class="t-en">Ideal For: New Entrepreneurs</span><span class="t-ne">उपयुक्त: नयाँ उद्यमी</span></span>
+      <span class="service-arrow"><span class="t-en">Learn more →</span><span class="t-ne">थप जान्नुहोस् →</span></span>
     </div>
     <div class="service-card">
-      <div class="service-icon" aria-hidden="true">WH</div>
-      <h3><span class="t-en">Warehousing</span><span class="t-ne">गोदाम सेवा</span></h3>
-      <p class="b-en">Secure storage, cycle-counted inventory control, and compliant fulfillment operations across partner facilities.</p>
-      <p class="b-ne">साझेदार सुविधाहरूमा सुरक्षित भण्डारण, चक्र-गणना इन्भेन्टरी नियन्त्रण र अनुपालनयुक्त फुलफिलमेन्ट सञ्चालन।</p>
-      <span class="service-meta"><span class="t-en">Ops: Inventory & Fulfillment</span><span class="t-ne">सञ्चालन: इन्भेन्टरी र फुलफिलमेन्ट</span></span>
-      <span class="service-arrow"><span class="t-en">Service details →</span><span class="t-ne">सेवा विवरण →</span></span>
+      <div class="service-icon icon-only" aria-hidden="true">
+        <img src="./E2E.svg" alt="" />
+      </div>
+      <h3><span class="t-en">End-to-End Support</span><span class="t-ne">सम्पूर्ण सहयोग</span></h3>
+      <p class="b-en">Sourcing, payment support, importing, customs, warehousing, and delivery under one trusted team.</p>
+      <p class="b-ne">एकै भरपर्दो टोलीमार्फत सोर्सिङ, भुक्तानी सहयोग, आयात, भन्सार, वेयरहाउसिङ र डेलिभरी।</p>
+      <span class="service-meta"><span class="t-en">Execution: Complete Backend</span><span class="t-ne">कार्यान्वयन: पूर्ण ब्याकएन्ड</span></span>
+      <span class="service-arrow"><span class="t-en">Learn more →</span><span class="t-ne">थप जान्नुहोस् →</span></span>
     </div>
     <div class="service-card">
-      <div class="service-icon" aria-hidden="true">CB</div>
-      <h3><span class="t-en">Customs Brokerage</span><span class="t-ne">भन्सार दलाली</span></h3>
-      <p class="b-en">HS classification support, documentation audit, and compliant clearance to reduce border delays and penalties.</p>
-      <p class="b-ne">सीमा ढिलाइ र जरिवाना घटाउन HS वर्गीकरण सहयोग, कागजात अडिट र अनुपालनयुक्त भन्सार क्लियरेन्स।</p>
-      <span class="service-meta"><span class="t-en">Compliance: Import / Export</span><span class="t-ne">अनुपालन: आयात / निर्यात</span></span>
-      <span class="service-arrow"><span class="t-en">Service details →</span><span class="t-ne">सेवा विवरण →</span></span>
+      <div class="service-icon icon-only" aria-hidden="true">
+        <img src="./Market.svg" alt="" />
+      </div>
+      <h3><span class="t-en">Market Insights &amp; Ideas</span><span class="t-ne">बजार इनसाइट र आइडिया</span></h3>
+      <p class="b-en">Get support selecting trending, high-demand products with practical earning potential.</p>
+      <p class="b-ne">ट्रेन्डिङ र उच्च माग भएका उत्पादन छनोटमा व्यावहारिक आम्दानी सम्भावनासहित सहयोग पाउनुहोस्।</p>
+      <span class="service-meta"><span class="t-en">Growth: Data-Informed Direction</span><span class="t-ne">वृद्धि: डेटा-आधारित दिशा</span></span>
+      <span class="service-arrow"><span class="t-en">Learn more →</span><span class="t-ne">थप जान्नुहोस् →</span></span>
     </div>
     <div class="service-card">
-      <div class="service-icon" aria-hidden="true">XD</div>
-      <h3><span class="t-en">Express Delivery</span><span class="t-ne">एक्सप्रेस डेलिभरी</span></h3>
-      <p class="b-en">Time-definite same-day and next-day delivery with priority dispatch for critical documents and parcels.</p>
-      <p class="b-ne">महत्वपूर्ण कागजात र पार्सलका लागि प्राथमिक डिस्प्याचसहित समय-निश्चित उही दिन र अर्को दिन डेलिभरी।</p>
-      <span class="service-meta"><span class="t-en">SLA: Same-day / Next-day</span><span class="t-ne">SLA: उही दिन / अर्को दिन</span></span>
-      <span class="service-arrow"><span class="t-en">Service details →</span><span class="t-ne">सेवा विवरण →</span></span>
+      <div class="service-icon icon-only" aria-hidden="true">
+        <img src="./Price.svg" alt="" />
+      </div>
+      <h3><span class="t-en">Best Prices, Better Margins</span><span class="t-ne">राम्रो दर, राम्रो नाफा</span></h3>
+      <p class="b-en">Factory-rate sourcing and cost control help you launch with stronger margins and lower risk.</p>
+      <p class="b-ne">फ्याक्ट्री दरमा सोर्सिङ र लागत नियन्त्रणले तपाईंलाई राम्रो नाफा र कम जोखिमसहित व्यवसाय सुरु गर्न मद्दत गर्छ।</p>
+      <span class="service-meta"><span class="t-en">Pricing: Competitive & Transparent</span><span class="t-ne">मूल्य: प्रतिस्पर्धी र पारदर्शी</span></span>
+      <span class="service-arrow"><span class="t-en">Get started now →</span><span class="t-ne">अहिल्यै सुरु गर्नुहोस् →</span></span>
     </div>
   </div>
 </section>
@@ -998,12 +1151,12 @@
     </div>
     <div class="fade-in">
       <div class="section-tag"><span class="t-en">Who We Are</span><span class="t-ne">हामी को हौं</span></div>
-      <h2 class="b-en">A Logistics Partner<br/>You Can Rely On</h2>
-      <h2 class="b-ne">एक लजिस्टिक्स साझेदार<br/>जसमा भर पर्न सकिन्छ</h2>
-      <p style="color:var(--ink2);font-size:14.5px;font-weight:300;line-height:1.75;margin-bottom:8px;" class="b-en">Startup Supplies helps businesses source and import products at the lowest practical cost with high quality standards. We work directly with verified manufacturers and factories to secure better pricing and dependable production support.</p>
-      <p style="color:var(--ink2);font-size:14.5px;font-weight:300;line-height:1.75;margin-bottom:8px;" class="b-en">Whether you are a new entrepreneur or an established company, we handle the full import process while you stay focused on sales, operations, and growth.</p>
-      <p style="color:var(--ink2);font-size:14.5px;font-weight:300;line-height:1.75;margin-bottom:8px;" class="b-ne">Startup Supplies ले उच्च गुणस्तर कायम राख्दै सम्भव भएसम्म कम लागतमा सामान सोर्सिङ र आयात गर्न सहयोग गर्छ। प्रमाणित निर्माता र फ्याक्ट्रीसँग प्रत्यक्ष समन्वय गरी राम्रो दर र भरपर्दो उत्पादन सहयोग सुनिश्चित गर्छौं।</p>
-      <p style="color:var(--ink2);font-size:14.5px;font-weight:300;line-height:1.75;margin-bottom:8px;" class="b-ne">तपाईं नयाँ उद्यमी हुनुहोस् वा स्थापित कम्पनी, तपाईंले बिक्री र व्यवसाय वृद्धिमा ध्यान दिन सक्नुहोस् भनेर हामी सम्पूर्ण आयात प्रक्रिया सम्हाल्छौं।</p>
+      <h2 class="b-en">Your Business Partner<br/>from Idea to Launch</h2>
+      <h2 class="b-ne">आइडियादेखि लन्चसम्म<br/>तपाईंको व्यवसाय साझेदार</h2>
+      <p style="color:var(--ink2);font-size:14.5px;font-weight:300;line-height:1.75;margin-bottom:8px;" class="b-en">At Startup Supplies Nepal, we make starting a business simple, fast, and profitable. We help entrepreneurs and small businesses source products, import machines, and set up a complete backend system without supplier and logistics hassles.</p>
+      <p style="color:var(--ink2);font-size:14.5px;font-weight:300;line-height:1.75;margin-bottom:8px;" class="b-en">You focus on building your brand and sales - we handle the rest.</p>
+      <p style="color:var(--ink2);font-size:14.5px;font-weight:300;line-height:1.75;margin-bottom:8px;" class="b-ne">Startup Supplies Nepal मा हामी व्यवसाय सुरु गर्ने प्रक्रिया सरल, छिटो र लाभदायक बनाउँछौं। हामी उद्यमी र साना व्यवसायलाई उत्पादन सोर्सिङ, मेसिन आयात र पूर्ण ब्याकएन्ड सेटअपमा सप्लायर तथा लजिस्टिक्स झन्झट बिना सहयोग गर्छौं।</p>
+      <p style="color:var(--ink2);font-size:14.5px;font-weight:300;line-height:1.75;margin-bottom:8px;" class="b-ne">तपाईं ब्रान्ड र बिक्री बढाउन ध्यान दिनुहोस् - बाँकी सबै हामी सम्हाल्छौं।</p>
       <ul class="about-points">
         <li>
           <span class="check-dot">✓</span>
@@ -1036,56 +1189,181 @@
           <span class="b-ne">स्टार्टअप तथा बढ्दो व्यवसायका लागि मेसिनरी, कच्चा पदार्थ, थोक सामान र स्पेयर पार्ट्स आयात सेवा।</span>
         </li>
       </ul>
+      <div class="hero-ctas" style="margin-top:24px;">
+        <a href="#contact" class="btn-primary">
+          <span class="t-en">Talk to Our Team Today</span>
+          <span class="t-ne">आजै हाम्रो टोलीसँग कुरा गर्नुहोस्</span>
+        </a>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="section-head fade-in">
+    <div class="section-tag"><span class="t-en">How It Works</span><span class="t-ne">कसरी काम गर्छ</span></div>
+    <h2 class="b-en">Launch Your Business<br/>in 5 Effortless Steps</h2>
+    <h2 class="b-ne">५ सजिला चरणमा<br/>व्यवसाय सुरु गर्नुहोस्</h2>
+  </div>
+  <div class="services-grid fade-in">
+    <div class="service-card">
+      <div class="service-icon icon-only" aria-hidden="true">
+        <img src="./1.svg" alt="" />
+      </div>
+      <h3><span class="t-en">Choose Your Business Idea</span><span class="t-ne">व्यवसाय आइडिया छान्नुहोस्</span></h3>
+      <p class="b-en">Pick a proven, trending idea - or let our team guide you with practical options.</p>
+      <p class="b-ne">प्रमाणित र ट्रेन्डिङ आइडिया छान्नुहोस् - वा हाम्रो टोलीबाट व्यावहारिक सुझाव लिनुहोस्।</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon icon-only" aria-hidden="true">
+        <img src="./2.svg" alt="" />
+      </div>
+      <h3><span class="t-en">We Source Products &amp; Machines</span><span class="t-ne">हामी उत्पादन र मेसिन सोर्स गर्छौं</span></h3>
+      <p class="b-en">Verified suppliers, high-quality products, and best-price negotiations for strong margins.</p>
+      <p class="b-ne">प्रमाणित सप्लायर, उच्च गुणस्तरीय उत्पादन र राम्रो नाफाका लागि उत्कृष्ट मूल्य वार्ता।</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon icon-only" aria-hidden="true">
+        <img src="./3.svg" alt="" />
+      </div>
+      <h3><span class="t-en">Import &amp; Logistics</span><span class="t-ne">आयात र लजिस्टिक्स</span></h3>
+      <p class="b-en">Shipping, customs clearance, and documentation are handled professionally end to end.</p>
+      <p class="b-ne">ढुवानी, भन्सार क्लियरेन्स र कागजी प्रक्रिया हामीले पूर्ण रूपमा व्यावसायिक ढंगले सम्हाल्छौं।</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon icon-only" aria-hidden="true">
+        <img src="./4.svg" alt="" />
+      </div>
+      <h3><span class="t-en">Delivery in Nepal</span><span class="t-ne">नेपालमा डेलिभरी</span></h3>
+      <p class="b-en">Receive ready-to-use products or machines at your location with clear updates.</p>
+      <p class="b-ne">तपाईंको स्थानमा स्पष्ट अपडेटसहित प्रयोगका लागि तयार उत्पादन वा मेसिन प्राप्त गर्नुहोस्।</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon icon-only" aria-hidden="true">
+        <img src="./5.svg" alt="" />
+      </div>
+      <h3><span class="t-en">Launch &amp; Scale</span><span class="t-ne">लन्च र स्केल</span></h3>
+      <p class="b-en">Focus on marketing, sales, and growth while we continue backend support.</p>
+      <p class="b-ne">हामीले ब्याकएन्ड सहयोग जारी राख्दा तपाईं मार्केटिङ, बिक्री र वृद्धिमा ध्यान दिनुहोस्।</p>
+    </div>
+  </div>
+  <div class="cta-group fade-in">
+    <a href="#contact" class="btn-primary">
+      <span class="t-en">Start Your Business Today</span>
+      <span class="t-ne">आजै व्यवसाय सुरु गर्नुहोस्</span>
+    </a>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="section-head fade-in">
-    <div class="section-tag"><span class="t-en">Client Reviews</span><span class="t-ne">ग्राहक समीक्षाहरू</span></div>
-    <h2 class="b-en">Trusted by Businesses<br/>Across India and China Routes</h2>
-    <h2 class="b-ne">भारत र चीन मार्गका व्यवसायहरूले<br/>भरोसा गर्छन्</h2>
-    <p class="section-lead b-en">Don't take our word for it — here's what our clients have to say.</p>
-    <p class="section-lead b-ne">हाम्रो कुरामा मात्र नमान्नुहोस् — हाम्रा ग्राहकहरूले के भन्छन् सुन्नुहोस्।</p>
+    <div class="section-tag"><span class="t-en">Social Proof</span><span class="t-ne">सामाजिक प्रमाण</span></div>
+    <h2 class="b-en">Helping Nepalese Entrepreneurs Succeed</h2>
+    <h2 class="b-ne">नेपाली उद्यमीहरूलाई सफल बनाउन सहयोग</h2>
+    <p class="section-lead b-en">Real stories from founders who launched faster with our backend support.</p>
+    <p class="section-lead b-ne">हाम्रो ब्याकएन्ड सहयोगबाट छिटो व्यवसाय सुरु गरेका उद्यमीहरूको वास्तविक अनुभव।</p>
   </div>
   <div class="testi-grid fade-in">
     <div class="testi-card">
       <div class="stars">★★★★★</div>
-      <p class="testi-text b-en">"Startup Supplies handled our entire supply chain restructuring flawlessly. Shipments arrived on time, documentation was spotless, and their team was available around the clock."</p>
-      <p class="testi-text b-ne">"Startup Supplies ले हाम्रो पूरै आपूर्ति श्रृंखला पुनर्संरचनालाई निर्दोष रूपमा सम्हाल्यो। ढुवानी समयमै आयो, कागजात सफा थियो, र उनीहरूको टोली चौबिसै घण्टा उपलब्ध थियो।"</p>
+      <p class="testi-text b-en">"Startup Supplies Nepal handled everything - sourcing, importing, and delivery. I could focus on marketing. My business is growing fast!"</p>
+      <p class="testi-text b-ne">"Startup Supplies Nepal ले सोर्सिङ, आयात र डेलिभरी सबै सम्हाल्यो। म मार्केटिङमा ध्यान दिन पाएँ। मेरो व्यवसाय छिटो बढिरहेको छ!"</p>
       <div class="testi-author">
-        <div class="testi-avatar">MK</div>
+        <div class="testi-avatar">RK</div>
         <div>
-          <div class="testi-name">Michael K.</div>
-          <div class="testi-role"><span class="t-en">Supply Chain Director, Kolkata</span><span class="t-ne">आपूर्ति श्रृंखला निर्देशक, कोलकाता</span></div>
+          <div class="testi-name">Ramesh K.</div>
+          <div class="testi-role"><span class="t-en">Entrepreneur, Kathmandu</span><span class="t-ne">उद्यमी, काठमाडौं</span></div>
         </div>
       </div>
     </div>
     <div class="testi-card">
       <div class="stars">★★★★★</div>
-      <p class="testi-text b-en">"We've used Startup Supplies for our India-China import cycle for the past year. Their customs brokerage service saves us days on every shipment. Highly recommended."</p>
-      <p class="testi-text b-ne">"हामीले गत वर्षदेखि भारत-चीन आयात चक्रका लागि Startup Supplies प्रयोग गर्दै आएका छौं। भन्सार दलाली सेवाले प्रत्येक ढुवानीमा हाम्रो दिनहरू बचाउँछ। अत्यधिक सिफारिस।"</p>
+      <p class="testi-text b-en">"Their guidance helped me choose a trending product and start selling immediately. Highly recommended!"</p>
+      <p class="testi-text b-ne">"उनीहरूको मार्गदर्शनले मलाई ट्रेन्डिङ उत्पादन छान्न र तुरुन्त बिक्री सुरु गर्न मद्दत गर्यो। अत्यन्त सिफारिस!"</p>
       <div class="testi-author">
-        <div class="testi-avatar">AS</div>
+        <div class="testi-avatar">SB</div>
         <div>
-          <div class="testi-name">Anya S.</div>
-          <div class="testi-role"><span class="t-en">E-commerce Owner, Guangzhou</span><span class="t-ne">ई-कमर्स मालिक, ग्वाङझाउ</span></div>
+          <div class="testi-name">Sita B.</div>
+          <div class="testi-role"><span class="t-en">Small Business Owner, Pokhara</span><span class="t-ne">साना व्यवसाय स्वामिनी, पोखरा</span></div>
         </div>
       </div>
     </div>
     <div class="testi-card">
       <div class="stars">★★★★★</div>
-      <p class="testi-text b-en">"Exceptional air freight service. Our time-sensitive pharmaceutical shipments are always handled with the highest care and speed. True professionals."</p>
-      <p class="testi-text b-ne">"उत्कृष्ट हवाई ढुवानी सेवा। हाम्रा समय-संवेदनशील फार्मास्युटिकल ढुवानीहरू सधैं सर्वोच्च सावधानी र गतिसँग सम्हालिन्छन्। साँचो पेशेवर।"</p>
+      <p class="testi-text b-en">"Startup Supplies Nepal made my startup journey much easier. From product sourcing to delivery, everything was handled professionally and on time. I could fully focus on sales and customer growth."</p>
+      <p class="testi-text b-ne">"Startup Supplies Nepal ले मेरो स्टार्टअप यात्रा धेरै सजिलो बनायो। उत्पादन सोर्सिङदेखि डेलिभरीसम्म सबै काम व्यावसायिक र समयमै भयो। म पूर्ण रूपमा बिक्री र ग्राहक वृद्धिमा ध्यान दिन सकेँ।"</p>
       <div class="testi-author">
-        <div class="testi-avatar">RJ</div>
+        <div class="testi-avatar">MP</div>
         <div>
-          <div class="testi-name">Rajiv J.</div>
-          <div class="testi-role"><span class="t-en">Logistics Manager, Mumbai</span><span class="t-ne">लजिस्टिक्स प्रबन्धक, मुम्बई</span></div>
+          <div class="testi-name">Mamta Poudel</div>
+          <div class="testi-role"><span class="t-en">Entrepreneur, Butwal</span><span class="t-ne">उद्यमी, बुटवल</span></div>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-head fade-in">
+    <div class="section-tag"><span class="t-en">FAQ</span><span class="t-ne">प्रश्नोत्तर</span></div>
+    <h2 class="b-en">Frequently Asked Questions</h2>
+    <h2 class="b-ne">बारम्बार सोधिने प्रश्नहरू</h2>
+  </div>
+  <div class="services-grid fade-in">
+    <div class="service-card">
+      <div class="service-icon icon-only" aria-hidden="true">
+        <img src="./Num1.svg" alt="" />
+      </div>
+      <h3><span class="t-en">Can I start if I am a complete beginner?</span><span class="t-ne">के म पूर्ण रूपमा नयाँ भए पनि सुरु गर्न सक्छु?</span></h3>
+      <p class="b-en">Yes. We guide you step by step from idea validation to launch.</p>
+      <p class="b-ne">हो। आइडिया छनोटदेखि लन्चसम्म हामी चरणबद्ध मार्गदर्शन गर्छौं।</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon icon-only" aria-hidden="true">
+        <img src="./Num2.svg" alt="" />
+      </div>
+      <h3><span class="t-en">Do I need to handle importing myself?</span><span class="t-ne">के आयात प्रक्रिया मैले आफैं सम्हाल्नुपर्छ?</span></h3>
+      <p class="b-en">No. We manage international shipping, customs clearance, and delivery for you.</p>
+      <p class="b-ne">होइन। अन्तर्राष्ट्रिय ढुवानी, भन्सार क्लियरेन्स र डेलिभरी हामीले सम्हाल्छौं।</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon icon-only" aria-hidden="true">
+        <img src="./Num3.svg" alt="" />
+      </div>
+      <h3><span class="t-en">Can you suggest profitable business ideas?</span><span class="t-ne">के तपाईं लाभदायक व्यवसाय आइडिया सुझाउन सक्नुहुन्छ?</span></h3>
+      <p class="b-en">Absolutely. We share trending, high-demand options based on current market opportunities.</p>
+      <p class="b-ne">अवश्य। हालको बजार अवसर अनुसार ट्रेन्डिङ र उच्च माग भएका विकल्प सुझाउँछौं।</p>
+    </div>
+  </div>
+  <div class="cta-group fade-in">
+    <a href="#contact" class="btn-primary">
+      <span class="t-en">Talk to Our Team Today</span>
+      <span class="t-ne">आजै हाम्रो टोलीसँग कुरा गर्नुहोस्</span>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="final-cta">
+  <div class="section-head fade-in">
+    <div class="section-tag"><span class="t-en">Start Now</span><span class="t-ne">अहिल्यै सुरु गर्नुहोस्</span></div>
+    <h2 class="b-en">Your Business Starts Today 🚀</h2>
+    <h2 class="b-ne">तपाईंको व्यवसाय आजै सुरु हुन्छ 🚀</h2>
+    <p class="section-lead b-en">Stop overthinking. Start building a profitable business with Startup Supplies Nepal - your trusted backend partner.</p>
+    <p class="section-lead b-ne">धेरै नसोच्नुहोस्। Startup Supplies Nepal सँग लाभदायक व्यवसाय सुरु गर्नुहोस् - तपाईंको भरपर्दो ब्याकएन्ड साझेदार।</p>
+  </div>
+  <div class="cta-group fade-in">
+    <a href="#contact" class="btn-primary">
+      <span class="t-en">Start Your Business Now</span>
+      <span class="t-ne">अहिल्यै व्यवसाय सुरु गर्नुहोस्</span>
+    </a>
+    <a href="https://wa.me/9779766715752" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="color:#fff;border-color:rgba(255,255,255,0.45);">
+      <span class="t-en">Message Us on WhatsApp</span>
+      <span class="t-ne">हामीलाई WhatsApp मा सन्देश पठाउनुहोस्</span>
+    </a>
   </div>
 </section>
 
@@ -1093,11 +1371,11 @@
 <section id="contact">
   <div class="contact-layout">
     <div class="fade-in">
-      <div class="section-tag"><span class="t-en">Get in Touch</span><span class="t-ne">सम्पर्कमा आउनुहोस्</span></div>
-      <h2 class="b-en">Request a Quote<br/>or Ask Anything</h2>
-      <h2 class="b-ne">उद्धरण अनुरोध गर्नुहोस्<br/>वा केही पनि सोध्नुहोस्</h2>
-      <p class="contact-info b-en">Our Nepal-based team typically responds within 2 business hours. For urgent inquiries, call us directly.</p>
-      <p class="contact-info b-ne">हाम्रो नेपाल-आधारित टोलीले सामान्यतया २ व्यावसायिक घण्टाभित्र जवाफ दिन्छ। अत्यावश्यक सोधपुछका लागि हामीलाई सिधै कल गर्नुहोस्।</p>
+      <div class="section-tag"><span class="t-en">Free Consultation</span><span class="t-ne">निःशुल्क परामर्श</span></div>
+      <h2 class="b-en">Talk to Our Team Today</h2>
+      <h2 class="b-ne">आजै हाम्रो टोलीसँग कुरा गर्नुहोस्</h2>
+      <p class="contact-info b-en">Tell us your idea, budget, and target market. We will guide you with profitable options, sourcing plans, and a clear import roadmap.</p>
+      <p class="contact-info b-ne">आफ्नो आइडिया, बजेट र लक्ष्य बजार बताउनुहोस्। हामी लाभदायक विकल्प, सोर्सिङ योजना र स्पष्ट आयात रोडम्यापसहित मार्गदर्शन गर्छौं।</p>
       <div class="contact-details">
         <div class="contact-item">
           <div class="contact-item-icon">📍</div>
@@ -1113,19 +1391,23 @@
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">🕐</div>
-          <span><span class="t-en">Mon–Sat 09:00–19:00 NPT (Nepal), India &amp; China support windows available</span><span class="t-ne">सोम–शनि ०९:००–१९:०० NPT (नेपाल), भारत र चीन समर्थन समय उपलब्ध</span></span>
+          <span>
+            <span class="t-en">India: 24/7 support &mdash; replies within 2–3 hours</span>
+            <span class="t-ne">भारत: २४/७ समर्थन &mdash; २–३ घण्टाभित्र जवाफ</span>
+          </span>
         </div>
       </div>
     </div>
     <div class="contact-form fade-in">
+      <h3 class="get-in-touch-title">Send Us a Message</h3>
       <div class="form-row">
         <div class="form-group">
           <label><span class="t-en">Full Name</span><span class="t-ne">पूरा नाम</span></label>
-          <input id="full-name" type="text" placeholder="John Doe" maxlength="80"/>
+          <input id="full-name" type="text" placeholder="Prabin Thapa" maxlength="80"/>
         </div>
         <div class="form-group">
           <label><span class="t-en">Company</span><span class="t-ne">कम्पनी</span></label>
-          <input id="company-name" type="text" placeholder="Acme Corp" maxlength="100"/>
+          <input id="company-name" type="text" placeholder="Smartech Store" maxlength="100"/>
         </div>
       </div>
       <div class="form-row">
@@ -1135,19 +1417,22 @@
         </div>
         <div class="form-group">
           <label><span class="t-en">Phone</span><span class="t-ne">फोन</span></label>
-          <input id="phone-number" type="tel" placeholder="+1 000 000 0000" maxlength="20"/>
+          <input id="phone-number" type="tel" placeholder="+977 000 000 0000" maxlength="20"/>
         </div>
       </div>
+    
       <div class="form-group">
         <label><span class="t-en">Service Required</span><span class="t-ne">आवश्यक सेवा</span></label>
         <select id="service-required">
-          <option value=""><span class="t-en">Select a service…</span></option>
-          <option>Sea Freight / समुद्री ढुवानी</option>
-          <option>Air Freight / हवाई ढुवानी</option>
-          <option>Road Transport / सडक यातायात</option>
-          <option>Warehousing / गोदाम</option>
-          <option>Customs Brokerage / भन्सार</option>
-          <option>Express Delivery / एक्सप्रेस</option>
+          <option value="">Select a service...</option>
+          <option>Free Consultation / निःशुल्क परामर्श</option>
+          <option>Business Idea Guidance / व्यवसाय आइडिया मार्गदर्शन</option>
+          <option>Product &amp; Machine Sourcing / उत्पादन र मेसिन सोर्सिङ</option>
+          <option>Supplier Verification / सप्लायर प्रमाणीकरण</option>
+          <option>Import &amp; Customs Handling / आयात र भन्सार व्यवस्थापन</option>
+          <option>Warehousing &amp; Nepal Delivery / वेयरहाउसिङ र नेपाल डेलिभरी</option>
+          <option>End-to-End Startup Setup / सम्पूर्ण स्टार्टअप सेटअप</option>
+          <option>Other / Not Sure / अन्य / निश्चित छैन</option>
         </select>
       </div>
       <div class="form-group">
@@ -1156,8 +1441,8 @@
         <p class="form-note"><span class="t-en">Inquiry message limit: 600 characters.</span><span class="t-ne">सोधपुछ सन्देश सीमा: ६०० वर्ण।</span></p>
       </div>
       <button class="form-submit" onclick="handleSubmit(event, this)">
-        <span class="t-en">Send Request →</span>
-        <span class="t-ne">अनुरोध पठाउनुहोस् →</span>
+        <span class="t-en">Send Whatsapp Message →</span>
+        <span class="t-ne">Whatsapp सन्देश पठाउनुहोस् →</span>
       </button>
       <p class="form-note"><span class="t-en">We respect your privacy. No spam, ever.</span><span class="t-ne">हामी तपाईंको गोपनीयताको सम्मान गर्छौं। कहिल्यै स्प्याम गर्दैनौं।</span></p>
     </div>
@@ -1181,8 +1466,9 @@
   </div>
   <div class="footer-links">
     <a href="#services"><span class="t-en">Services</span><span class="t-ne">सेवाहरू</span></a>
+    <a href="#how-it-works"><span class="t-en">How It Works</span><span class="t-ne">कसरी काम गर्छ</span></a>
     <a href="#about"><span class="t-en">About</span><span class="t-ne">बारे</span></a>
-    <a href="#testimonials"><span class="t-en">Reviews</span><span class="t-ne">समीक्षा</span></a>
+    <a href="#faq"><span class="t-en">FAQ</span><span class="t-ne">प्रश्नोत्तर</span></a>
     <a href="#contact"><span class="t-en">Contact</span><span class="t-ne">सम्पर्क</span></a>
   </div>
   <div class="footer-copy">
@@ -1190,6 +1476,17 @@
     <span class="t-ne">© २०२६ Startup Supplies. सर्वाधिकार सुरक्षित।</span>
   </div>
 </footer>
+
+<a
+  class="whatsapp-float"
+  href="https://wa.me/9779766715752"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Contact us on WhatsApp"
+  title="Contact us on WhatsApp"
+>
+  <img src="./whatsappicon.png" alt="WhatsApp" />
+</a>
 
 <script>
   // Language toggle
